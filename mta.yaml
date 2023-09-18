@@ -1,0 +1,80 @@
+_schema-version: "3.2"
+ID: SCMCTCDASHBOARD-REACT
+version: 0.0.1
+modules:
+- name: SCMCTCDASHBOARD-REACT-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: SCMCTCDASHBOARD-REACT-destination-service
+    parameters:
+      content-target: true
+  - name: SCMCTCDASHBOARD-REACT_html_repo_host
+    parameters:
+      service-key:
+        name: SCMCTCDASHBOARD-REACT_html_repo_host-key
+  - name: uaa_SCMCTCDASHBOARD-REACT
+    parameters:
+      service-key:
+        name: uaa_SCMCTCDASHBOARD-REACT-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: DubaiExpoIframe_SCMCTCDASHBOARD-REACT_html_repo_host
+          ServiceInstanceName: SCMCTCDASHBOARD-REACT-html5-app-host-service
+          ServiceKeyName: SCMCTCDASHBOARD-REACT_html_repo_host-key
+          sap.cloud.service: DubaiExpoIframe
+        - Authentication: OAuth2UserTokenExchange
+          Name: DubaiExpoIframe_uaa_SCMCTCDASHBOARD-REACT
+          ServiceInstanceName: SCMCTCDASHBOARD-REACT-xsuaa-service
+          ServiceKeyName: uaa_SCMCTCDASHBOARD-REACT-key
+          sap.cloud.service: DubaiExpoIframe
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: SCMCTCDASHBOARD-REACT_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: SCMCTCDASHBOARD-REACT_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - DubaiExpoIframe-content.zip
+      name: DubaiExpoIframe
+      target-path: resources/
+- name: DubaiExpoIframe
+  type: html5
+  path: DubaiExpoIframe
+  build-parameters:
+    builder: custom
+    commands:
+    - npm install
+    - npm run build
+    supported-platforms: []
+resources:
+- name: SCMCTCDASHBOARD-REACT-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+    service: destination
+    service-name: SCMCTCDASHBOARD-REACT-destination-service
+    service-plan: lite
+- name: SCMCTCDASHBOARD-REACT_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: SCMCTCDASHBOARD-REACT-html5-app-host-service
+    service-plan: app-host
+- name: uaa_SCMCTCDASHBOARD-REACT
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: SCMCTCDASHBOARD-REACT-xsuaa-service
+    service-plan: application

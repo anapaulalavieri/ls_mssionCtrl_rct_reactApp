@@ -1,0 +1,9 @@
+/mta_archives/
+/node_modules/
+/resources/
+node_modules
+
+# auto generated wildcard
+myappdest/.env
+# auto generated wildcard
+SCMCTCDASHBOARD-REACT/DubaiExpoIframe/src/.env
