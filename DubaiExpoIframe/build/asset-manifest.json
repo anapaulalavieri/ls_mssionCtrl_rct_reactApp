@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "./static/css/main.4f52d060.chunk.css",
+    "main.js": "./static/js/main.533ddcbd.chunk.js",
+    "main.js.map": "./static/js/main.533ddcbd.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.79eec9e6.js",
+    "runtime-main.js.map": "./static/js/runtime-main.79eec9e6.js.map",
+    "static/js/2.cbd390a4.chunk.js": "./static/js/2.cbd390a4.chunk.js",
+    "static/js/2.cbd390a4.chunk.js.map": "./static/js/2.cbd390a4.chunk.js.map",
+    "static/js/3.46710386.chunk.js": "./static/js/3.46710386.chunk.js",
+    "static/js/3.46710386.chunk.js.map": "./static/js/3.46710386.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.4f52d060.chunk.css.map": "./static/css/main.4f52d060.chunk.css.map",
+    "static/js/2.cbd390a4.chunk.js.LICENSE.txt": "./static/js/2.cbd390a4.chunk.js.LICENSE.txt",
+    "static/js/main.533ddcbd.chunk.js.LICENSE.txt": "./static/js/main.533ddcbd.chunk.js.LICENSE.txt",
+    "static/media/New_Globe.c198f739.png": "./static/media/New_Globe.c198f739.png",
+    "static/media/alert.ec941a0e.svg": "./static/media/alert.ec941a0e.svg",
+    "static/media/arrow.13f8698a.svg": "./static/media/arrow.13f8698a.svg",
+    "static/media/back.afadfc84.jpg": "./static/media/back.afadfc84.jpg",
+    "static/media/clouds.fe9768eb.png": "./static/media/clouds.fe9768eb.png",
+    "static/media/lighting.22e2e5f3.png": "./static/media/lighting.22e2e5f3.png",
+    "static/media/logo.0ae7c7e2.svg": "./static/media/logo.0ae7c7e2.svg",
+    "static/media/menu.0282e799.svg": "./static/media/menu.0282e799.svg",
+    "static/media/rectangle.1e0cb35e.svg": "./static/media/rectangle.1e0cb35e.svg",
+    "static/media/search.c0a2facb.svg": "./static/media/search.c0a2facb.svg",
+    "static/media/worldmap_countries_americas.91cd9706.png": "./static/media/worldmap_countries_americas.91cd9706.png",
+    "static/media/worldmap_countries_apj.9230da2a.png": "./static/media/worldmap_countries_apj.9230da2a.png",
+    "static/media/worldmap_countries_emea.303076cf.png": "./static/media/worldmap_countries_emea.303076cf.png",
+    "static/media/worldmap_countries_global.245f0c31.png": "./static/media/worldmap_countries_global.245f0c31.png",
+    "static/media/worldmap_countries_ids.8ae32d39.png": "./static/media/worldmap_countries_ids.8ae32d39.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.79eec9e6.js",
+    "static/js/2.cbd390a4.chunk.js",
+    "static/css/main.4f52d060.chunk.css",
+    "static/js/main.533ddcbd.chunk.js"
+  ]
+}

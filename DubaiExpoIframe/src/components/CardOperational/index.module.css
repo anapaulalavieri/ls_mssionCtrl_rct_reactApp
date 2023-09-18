@@ -1,0 +1,29 @@
+.card {
+  top: 108px;
+  left: 48px;
+  position: absolute;
+  z-index: 10;
+  width: 186px;
+}
+
+:global(.cardOperationalAnimate-appear) .card {
+  opacity: 0;
+  transform: translateX(-250px);
+}
+
+:global(.cardOperationalAnimate-appear-active) .card {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+:global(.cardOperationalAnimate-exit) .card {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+:global(.cardOperationalAnimate-exit-active) .card {
+  opacity: 0;
+  transform: translateX(-250px);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}

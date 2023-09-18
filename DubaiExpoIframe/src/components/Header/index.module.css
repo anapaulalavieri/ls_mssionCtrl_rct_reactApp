@@ -1,0 +1,50 @@
+.header {
+  z-index: 20;
+  position: absolute;
+  width: calc(100% - (48px * 2));
+  padding: 22px 48px 0 48px;
+  display: flex;
+  justify-content: space-between;
+}
+
+:global(.headerAnimate-appear) .header {
+  opacity: 0;
+  transform: translateY(-250px);
+}
+
+:global(.headerAnimate-appear-active) .header {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbs svg {
+  margin-right: 18px;
+}
+
+.menu {
+  position: relative;
+  top: 10px;
+}
+
+.menu svg {
+  margin-left: 27px;
+  cursor: pointer;
+}
+
+.navLink {
+  color: #14161a;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+  transition: color 0.3s ease-out;
+}
+
+.navLink:hover {
+  color: #a100ff;
+}

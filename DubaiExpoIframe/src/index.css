@@ -1,0 +1,22 @@
+body {
+  background-color: #e9e9ee;
+  margin: 0;
+  font-family: "72", "72full", Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+@font-face {
+  font-family: "72";
+  font-style: normal;
+  font-weight: 300;
+  src: local("72-Light"),
+    url("https://ui5.sap.com/sdk/resources/sap/ui/core/themes/sap_fiori_3/fonts/72-Light.woff2?ui5-webcomponents")
+      format("woff2"),
+    url("https://ui5.sap.com/sdk/resources/sap/ui/core/themes/sap_fiori_3/fonts/72-Light.woff?ui5-webcomponents")
+      format("woff");
+}

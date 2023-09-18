@@ -1,0 +1,6 @@
+---
+applications:
+- name: DubaiExpoIframe
+path: build/
+buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+memory: 1024M

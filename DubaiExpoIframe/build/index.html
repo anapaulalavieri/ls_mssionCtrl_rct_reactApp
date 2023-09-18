@@ -1,0 +1,227 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><title>Expo</title><link href="./static/css/main.4f52d060.chunk.css" rel="stylesheet"></head><body><script type="shader-vertex-icosphere">#define GLSLIFY 1
+      attribute vec4 position;
+      attribute vec3 normal;
+      attribute vec2 texcoord;
+      uniform mat4 u_worldViewProjection;
+      uniform mat4 u_viewInverse;
+      uniform mat4 u_model;
+      uniform vec3 u_cameraPos;
+      varying float vAlpha;
+      varying vec2 vTexture;
+
+      void main(){
+        vec4 pos=u_worldViewProjection*u_model*position;
+        vAlpha=dot(normalize(u_cameraPos),normalize(position.xyz));
+        vTexture=texcoord;
+        gl_Position=pos;
+      }</script><script type="shader-fragment-icosphere">precision mediump float;
+      #define GLSLIFY 1
+      uniform sampler2D u_inactive;
+      uniform sampler2D u_active;
+      uniform sampler2D u_id;
+      uniform sampler2D u_data;
+      uniform float u_idAnimateIn;
+      uniform float u_idAnimateOut;
+      uniform float u_animateIn;
+      uniform float u_animateOut;
+      uniform vec3 u_animateHover;
+      uniform vec3 u_animatable0;
+      uniform vec3 u_animatable1;
+      uniform vec3 u_animatable2;
+      uniform vec3 u_animatable3;
+      uniform vec3 u_animatable4;
+      uniform vec3 u_animatable5;
+      varying float vAlpha;
+      varying vec2 vTexture;
+
+      float when_eq(float x,float y){
+        return 1.0-abs(sign(x-y));
+      }
+
+      float when_lt(float x,float y){
+        return max(sign(y-x),0.0);
+      }
+
+      vec2 get_data_coords_from_id(float id){
+        float width=16.0;
+        float height=16.0;
+        float w_pixel=1.0/width;
+        float h_pixel=1.0/height;
+        float row=floor(id/width);
+        float col=id-(row*width);
+        return vec2(col*w_pixel,row*h_pixel);
+      }
+
+      void main(){
+        vec4 inactiveColor=texture2D(u_inactive,vec2(vTexture.x-0.25,vTexture.y));
+        vec4 activeColor=texture2D(u_active,vec2(vTexture.x-0.25,vTexture.y));
+        vec4 idColor=texture2D(u_id,vec2(vTexture.x-0.25,vTexture.y));
+        vec4 dataColor=texture2D(u_data,get_data_coords_from_id(floor(idColor.r*255.0)))*idColor.a;
+        vec3 base=inactiveColor.rgb*(1.0-dataColor.a)+dataColor.rgb*(dataColor.a);
+        vec3 color=base;
+        gl_FragColor=vec4(color,1.0);
+      }</script><script type="shader-vertex-points">#define GLSLIFY 1
+      attribute vec3 position;
+      attribute vec2 texture;
+      attribute vec3 tangentU;
+      attribute vec3 tangentV;
+      attribute vec2 textureG;
+      attribute float random;
+      uniform mat4 u_model;
+      uniform mat4 u_worldViewProjection;
+      uniform mat4 u_viewInverse;
+      uniform vec3 u_cameraPos;
+      uniform float uPointSize;
+      uniform float uRandomPointSizeDelta;
+      uniform float uRandomPointSizeRatio;
+      uniform float uMinPointAlpha;
+      uniform float uMinPointSize;
+      uniform float u_time;
+      uniform float u_speed;
+      uniform vec2 uOffset;
+      uniform vec3 uRippleCenter;
+      uniform float uRippleProgress;
+      uniform float uRippleWidth;
+      uniform float uRippleHeight;
+      varying vec2 vTexture;
+      varying vec4 vColor;
+      varying float vShine;
+      varying vec2 vTextureG;
+      varying float vTime;
+      varying float vAlpha;
+
+      varying float uARippleProgress;
+      varying float uD;
+
+      mat4 rotationMatrix(vec3 axis,float angle){
+        axis=normalize(axis);
+        float s=sin(angle);
+        float c=cos(angle);
+        float oc=1.0-c;
+        return mat4(oc*axis.x*axis.x+c,oc*axis.x*axis.y-axis.z*s,oc*axis.z*axis.x+axis.y*s,0.0,oc*axis.x*axis.y+axis.z*s,oc*axis.y*axis.y+c,oc*axis.y*axis.z-axis.x*s,0.0,oc*axis.z*axis.x-axis.y*s,oc*axis.y*axis.z+axis.x*s,oc*axis.z*axis.z+c,0.0,0.0,0.0,0.0,1.0);
+      }
+
+      void main(){
+        vec4 pos=vec4(position,1.0);
+        gl_PointSize=10.0;
+        mat4 rot1=rotationMatrix(tangentU,(texture.x*2.0)-1.0);
+        vec4 pos1=rot1*pos;
+        mat4 rot2=rotationMatrix(tangentV,((texture.y*2.0)-1.0));
+        vec4 pos2=rot2*pos;
+        float rotSizeDelta=max((dot(normalize(u_cameraPos),position)+1.0)/2.0,uMinPointSize);
+        float randomSize=uRandomPointSizeDelta*random*step(random,1.0-uRandomPointSizeRatio);
+        pos.xyz+=pos1.xyz*(uPointSize+randomSize);
+        pos.xyz+=pos2.xyz*(uPointSize+randomSize);
+        vec3 rippleCenter=vec3(0.0,0.0,1.0);
+        float d=1.0-((dot(pos.xyz,uRippleCenter)+1.0)/2.0);
+        float q=smoothstep(uRippleProgress-uRippleWidth,uRippleProgress,d);
+        q-=smoothstep(uRippleProgress,uRippleProgress+uRippleWidth,d);
+        float t=1.0+q*uRippleHeight;
+        pos.xyz*=t;
+        gl_Position=u_worldViewProjection*u_model*pos;
+        gl_Position.xy+=uOffset*gl_Position.w;
+        float c=t/1.04;
+        vTexture=texture;
+        vTextureG=textureG;
+        vShine=q;
+        vTime=(u_time/100.0)*u_speed;
+        // vAlpha=max((dot(normalize(u_cameraPos),position)+1.0)/2.0,uMinPointAlpha);
+        vAlpha=max(dot(normalize(u_cameraPos),position)/0.9,uMinPointAlpha);
+
+        uARippleProgress=uRippleProgress;
+        uD=d;
+      }</script><script type="shader-fragment-points">precision mediump float;
+      #define GLSLIFY 1
+      uniform vec3 uLeftColorCurrent;
+      uniform vec3 uLeftColorTarget;
+      uniform vec3 uRightColor;
+      uniform float uColorChangeAnimation;
+      uniform vec2 uResolution;
+      uniform float uSeed;
+      uniform float uScale;
+      uniform vec3 uColor;
+      uniform vec3 uRippleColor;
+      uniform vec4 uCardMargin;
+      uniform sampler2D uNoiseTexture;
+      varying vec2 vTexture;
+      varying vec2 vTextureG;
+      varying vec4 vColor;
+      varying float vShine;
+      varying float vTime;
+      varying float vAlpha;
+
+      uniform sampler2D u_data;
+      uniform sampler2D u_id;
+      uniform sampler2D uBgTexture;
+      uniform vec3 uActiveColor;
+      uniform float uActiveColorOffset;
+      uniform float uActiveCircleDiameter;
+      uniform float uPointAlpha;
+      varying float uARippleProgress;
+      varying float uD;
+
+      void main(){
+        vec4 idColor=texture2D(uBgTexture,vec2(vTextureG.x,vTextureG.y));
+
+        vec4 noiseColor=texture2D(uNoiseTexture,vec2(vTextureG.x+fract(vTime),vTextureG.y));
+        float d=1.0-smoothstep(0.45,0.5,distance(vec2(0.5,0.5),vTexture));
+        // vec3 color=mix(uColor,uRippleColor,vShine);
+
+        vec3 color=mix(vec3(uColor),uRippleColor,vShine);
+        float q=smoothstep(uARippleProgress,uARippleProgress-uActiveColorOffset,uD);
+
+        if (q>0.9) {
+          if (idColor.r==1.0) {
+            color=mix(vec3(uColor),vec3(uActiveColor),q);
+            color=mix(vec3(uColor),color,idColor.a);
+          } else if (uActiveCircleDiameter > 0.0) {
+            color=mix(vec3(uColor),vec3(uActiveColor),sin(pow(q * (1.0 - uD), 120.0)));
+          }
+        }
+
+        float alpha=vAlpha*d*pow(noiseColor.r,uPointAlpha);
+        gl_FragColor=vec4(color,alpha);
+      }</script><script type="shader-fragment-background">precision mediump float;
+      #define GLSLIFY 1
+      uniform sampler2D u_background;
+      uniform vec2 u_resolution;
+      varying float vAlpha;
+      varying vec2 vTexture;
+      void main(){
+        vec4 textureColor=texture2D(u_background,vec2(vTexture.x, 1.0 - vTexture.y));
+        gl_FragColor=vec4(textureColor.rgb,1.0);
+      }</script><script type="shader-vertex-atmosphere">#define GLSLIFY 1
+      attribute vec4 position;
+      attribute vec2 texcoord;
+      uniform mat4 u_worldViewProjection;
+      uniform mat4 u_viewInverse;
+      uniform mat4 u_model;
+      uniform mat4 u_view;
+      uniform float u_scale;
+      uniform vec3 u_cameraPos;
+      varying float vAlpha;
+      varying vec2 vTexture;
+      void main(){
+        vec3 cameraRight=normalize(vec3(u_view[0][0],u_view[1][0],u_view[2][0]));
+        vec3 cameraUp=normalize(vec3(u_view[0][1],u_view[1][1],u_view[2][1]));
+        vec3 cameraForward=normalize(u_cameraPos);
+        vec3 worldPos=cameraRight*position.x*u_scale+cameraUp*position.y*u_scale;
+        vec4 pos=u_worldViewProjection*vec4(worldPos,1.0);
+        gl_Position=pos;
+        vTexture=texcoord;
+      }</script><script type="shader-fragment-atmosphere">precision mediump float;
+      #define GLSLIFY 1
+      uniform sampler2D u_background;
+      varying float vAlpha;
+      varying vec2 vTexture;
+      void main(){
+        gl_FragColor=vec4(1.0);
+      }</script><script type="shader-fragment-atmosphere-with-texture">precision mediump float;
+      #define GLSLIFY 1
+      uniform sampler2D u_background;
+      varying float vAlpha;
+      varying vec2 vTexture;
+      void main(){
+        vec4 textureColor=texture2D(u_background,vTexture);
+        gl_FragColor=textureColor;
+      }</script><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><style>.loader{align-items:center;display:flex;justify-content:center;height:100%;left:0;position:fixed;transition:opacity .3s ease-out,visibility 0s;top:0;width:100%;z-index:100000}.loader-bg{background-color:#e9e9ee;height:100%;left:0;position:absolute;top:0;width:100%}.loaded .loader{opacity:0;transition:opacity .3s ease-out,visibility 0s .3s;visibility:hidden}.loader-dots{position:relative;width:100px;height:100px;display:flex;justify-content:space-around;align-items:center}.loader-dot{animation:anim8 1s ease alternate infinite;background-color:#fff;border-radius:50%;filter:blur(0);height:20px;opacity:1;transform:translateZ(-1400px) translateY(20px);width:20px}.loader-dot:nth-child(1){animation-delay:.25s}.loader-dot:nth-child(2){animation-delay:.5s}.loader-dot:nth-child(3){animation-delay:.75s}.loader-dot:nth-child(4){animation-delay:1s}@keyframes anim8{0%{transform:translateZ(-1400px) translateY(20px);filter:blur(0);opacity:1}100%{transform:translateZ(0) translateY(0);filter:blur(10px);opacity:0}}</style><div class="loader"><div class="loader-bg"></div><div class="loader-dots"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div></div></div><script>!function(e){function r(r){for(var n,a,i=r[0],c=r[1],l=r[2],f=0,s=[];f<i.length;f++)a=i[f],Object.prototype.hasOwnProperty.call(o,a)&&o[a]&&s.push(o[a][0]),o[a]=0;for(n in c)Object.prototype.hasOwnProperty.call(c,n)&&(e[n]=c[n]);for(p&&p(r);s.length;)s.shift()();return u.push.apply(u,l||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,i=1;i<t.length;i++){var c=t[i];0!==o[c]&&(n=!1)}n&&(u.splice(r--,1),e=a(a.s=t[0]))}return e}var n={},o={1:0},u=[];function a(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,a),t.l=!0,t.exports}a.e=function(e){var r=[],t=o[e];if(0!==t)if(t)r.push(t[2]);else{var n=new Promise((function(r,n){t=o[e]=[r,n]}));r.push(t[2]=n);var u,i=document.createElement("script");i.charset="utf-8",i.timeout=120,a.nc&&i.setAttribute("nonce",a.nc),i.src=function(e){return a.p+"static/js/"+({}[e]||e)+"."+{3:"46710386"}[e]+".chunk.js"}(e);var c=new Error;u=function(r){i.onerror=i.onload=null,clearTimeout(l);var t=o[e];if(0!==t){if(t){var n=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+e+" failed.\n("+n+": "+u+")",c.name="ChunkLoadError",c.type=n,c.request=u,t[1](c)}o[e]=void 0}};var l=setTimeout((function(){u({type:"timeout",target:i})}),12e4);i.onerror=i.onload=u,document.head.appendChild(i)}return Promise.all(r)},a.m=e,a.c=n,a.d=function(e,r,t){a.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,r){if(1&r&&(e=a(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(a.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)a.d(t,n,function(r){return e[r]}.bind(null,n));return t},a.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(r,"a",r),r},a.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},a.p="./",a.oe=function(e){throw console.error(e),e};var i=this.webpackJsonpapp=this.webpackJsonpapp||[],c=i.push.bind(i);i.push=r,i=i.slice();for(var l=0;l<i.length;l++)r(i[l]);var p=c;t()}([])</script><script src="./static/js/2.cbd390a4.chunk.js"></script><script src="./static/js/main.533ddcbd.chunk.js"></script></body></html>

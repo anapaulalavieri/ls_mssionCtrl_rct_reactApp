@@ -1,0 +1,46 @@
+.wrapper {
+  position: relative;
+}
+
+.wrapper_loaded {
+}
+
+.canvas {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.labelsWrapper {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.loader {
+  align-items: center;
+  background: #e9e9ee;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+:global(.workshopPageAnimate-exit) .loader,
+:global(.factoryPageAnimate-exit) .loader {
+  display: none;
+}
+
+.wrapper_loaded .loader {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-duration) ease-out;
+}

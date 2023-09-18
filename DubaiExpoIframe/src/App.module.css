@@ -1,0 +1,24 @@
+.app {
+  --transition-duration: 0.7s;
+  --transition-enter-delay: 1s;
+
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.loader {
+  background: #e9f0f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  z-index: 999999999;
+}

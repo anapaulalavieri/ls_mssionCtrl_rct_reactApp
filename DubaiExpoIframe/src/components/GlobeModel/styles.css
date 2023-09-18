@@ -1,0 +1,378 @@
+.poi-pin-wrapper {
+  --active-color: #a95df1;
+  --active-selected-color: #9303e7;
+  --best-color: #ff9900;
+  --border-radius: 50%;
+  --pin-size: 24px;
+  --danger-scale: 2.5;
+  --hover-scale: 4.5;
+  --active-scale: 5.1;
+
+  padding: 10px;
+  margin-top: -22px;
+  margin-left: -22px;
+  position: absolute;
+  pointer-events: all;
+  user-select: none;
+}
+.poi-pin-wrapper_no-margin {
+  margin: 0;
+}
+.poi-pin-wrapper_status-warning {
+  --active-color: #ff9900;
+  --active-selected-color: #e78a00;
+}
+.poi-pin-wrapper_status-danger {
+  --active-color: #f7363e;
+  --active-selected-color: #dc2229;
+}
+.poi-pin-wrapper_style-dc {
+  --border-radius: 0;
+  --pin-size: 20px;
+  --hover-scale: 4;
+  --active-scale: 4.3;
+}
+.poi-pin-wrapper:hover {
+  z-index: 999999999 !important;
+}
+.poi-pin-wrapper.active {
+  z-index: 999999998 !important;
+}
+.poi-pin-wrapper.hide,
+.poi-pin-wrapper.hidden {
+  pointer-events: none;
+}
+
+.poi-pin {
+  transition: transform 0.3s ease-out;
+}
+.poi-pin-wrapper.hide .poi-pin,
+.poi-pin-wrapper.hidden .poi-pin {
+  transform: scale(0);
+}
+
+.poi-pin-inner {
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: block;
+  height: var(--pin-size);
+  position: relative;
+  transition: border-color 0.3s ease-out, transform 0.3s ease-out;
+  transform: rotate(45deg);
+  transform-origin: 45% 48.5%; /* Fix position relative popup's arrow */
+  width: var(--pin-size);
+  z-index: 1;
+}
+.poi-pin-wrapper.active .poi-pin-inner {
+  border-color: var(--active-color);
+  transform: rotate(45deg) scale(1.25);
+}
+
+.poi-pin-inner:after {
+  background-color: #32363a;
+  border-radius: var(--border-radius);
+  content: "";
+  display: inline-block;
+  height: 4px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease-out, transform 0.3s ease-out;
+  width: 4px;
+  z-index: 1;
+}
+.poi-pin-wrapper.preselected .poi-pin-inner:after {
+  transform: translate(-50%, -50%) scale(2);
+}
+.poi-pin-wrapper.active .poi-pin-inner:after {
+  background-color: var(--active-color);
+  transform: translate(-50%, -50%) scale(var(--active-scale));
+}
+.poi-pin-wrapper_status-warning .poi-pin-inner:after,
+.poi-pin-wrapper_status-danger .poi-pin-inner:after {
+  background-color: var(--active-color);
+  transform: translate(-50%, -50%) scale(var(--danger-scale));
+}
+.poi-pin-inner:hover:after {
+  background-color: var(--active-color);
+  transform: translate(-50%, -50%) scale(var(--hover-scale));
+}
+
+.poi-pin-inner:before {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  content: "";
+  display: inline-block;
+  height: 4px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease-out;
+  width: 4px;
+  z-index: 2;
+}
+.poi-pin-wrapper.active .poi-pin-inner:before {
+  transform: translate(-50%, -50%) scale(0.75);
+}
+
+.poi-callout-container {
+  background: #fff;
+  border-radius: 6px;
+  bottom: calc(100% + 3px);
+  box-sizing: border-box;
+  left: 50%;
+  opacity: 0;
+  padding: 9px 16px;
+  pointer-events: none;
+  position: absolute;
+  transform: translateX(-50%);
+  transition: background-color 0.3s ease-out, opacity 0.3s ease-out;
+}
+.poi-pin:hover + .poi-callout-container_has-hover,
+.poi-pin-wrapper.active .poi-callout-container_has-hover {
+  cursor: pointer;
+}
+.poi-pin:hover + .poi-callout-container,
+.poi-pin-wrapper.active .poi-callout-container {
+  pointer-events: all;
+  opacity: 1;
+}
+.poi-pin-wrapper.hide .poi-callout-container,
+.poi-pin-wrapper.hidden .poi-callout-container {
+  opacity: 0;
+}
+.poi-pin-wrapper.active .poi-callout-container_has-hover:hover,
+.poi-pin-wrapper_status-warning.active .poi-callout-container_has-hover:hover,
+.poi-pin-wrapper_status-danger.active .poi-callout-container_has-hover:hover {
+  background-color: var(--active-color);
+}
+.poi-pin-wrapper.active .poi-callout-container_has-hover:active {
+  background-color: var(--active-selected-color);
+}
+
+.poi-callout-container:after {
+  bottom: 1px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 6px solid #fff;
+  content: "";
+  display: inline-block;
+  height: 0;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  transition: border-top-color 0.3s ease-out;
+  position: absolute;
+  width: 0;
+}
+.poi-pin-wrapper.active .poi-callout-container_has-hover:hover:after,
+.poi-pin-wrapper_status-warning.active .poi-callout-container_has-hover:hover:after,
+.poi-pin-wrapper_status-danger.active .poi-callout-container_has-hover:hover:after {
+  border-top-color: var(--active-color);
+}
+.poi-pin-wrapper.active .poi-callout-container:active:after {
+  border-top-color: var(--active-selected-color);
+}
+
+.poi-callout-container__title {
+  font-size: 14px;
+  color: #14161a;
+  transition: color 0.3s ease-out;
+  white-space: nowrap;
+}
+
+.poi-pin-wrapper.active .poi-callout-container__title {
+  color: #a95df1;
+}
+
+.poi-pin-wrapper_is-best.active .poi-callout-container__title {
+  color: #14161a;
+}
+
+.poi-callout-container_has-hover:hover .poi-callout-container__title,
+.poi-callout-container:active .poi-callout-container__title,
+.poi-pin-wrapper.active .poi-callout-container_has-hover:hover .poi-callout-container__title,
+.poi-pin-wrapper_status-warning .poi-callout-container:active .poi-callout-container__title,
+.poi-pin-wrapper_status-danger .poi-callout-container:active .poi-callout-container__title {
+  color: #fff;
+}
+
+.poi-pin-wrapper_status-warning.active .poi-callout-container__title,
+.poi-pin-wrapper_status-danger.active .poi-callout-container__title {
+  color: var(--active-color);
+}
+
+.poi-callout-container__arrow {
+  display: none;
+  margin-top: 3px;
+  opacity: 0;
+  stroke: currentColor;
+  margin-left: -9px;
+  transition: margin-left 0.3s ease-out 0.3s, opacity 0.3s ease-out, transform 0.3s ease-out;
+  vertical-align: top;
+}
+.poi-pin-wrapper_is-best .poi-callout-container__arrow {
+  stroke: var(--best-color);
+}
+.poi-callout-container_has-hover .poi-callout-container__arrow {
+  display: inline-block;
+}
+.poi-pin-wrapper.active .poi-callout-container__arrow {
+  transition: margin-left 0.3s ease-out, opacity 0.3s ease-out 0.3s, transform 0.3s ease-out;
+  margin-left: 9px;
+  opacity: 1;
+}
+
+.poi-pin-wrapper.active .poi-callout-container_has-hover:hover .poi-callout-container__arrow {
+  transform: translateX(3px);
+}
+.poi-pin-wrapper.active.poi-pin-wrapper_is-best .poi-callout-container_has-hover:hover .poi-callout-container__arrow {
+  stroke: #fff;
+}
+
+.poi-callout-container__warning-icon {
+  display: none;
+  fill: var(--active-color);
+  margin-top: 4px;
+  margin-right: 4px;
+  transition: fill 0.3s ease-out;
+  vertical-align: top;
+}
+.poi-callout-container_has-hover:hover .poi-callout-container__warning-icon {
+  fill: #fff;
+}
+
+.poi-pin-wrapper_status-warning .poi-callout-container__warning-icon,
+.poi-pin-wrapper_status-danger .poi-callout-container__warning-icon {
+  display: inline-block;
+}
+
+.poi-callout-container__best-icon {
+  display: none;
+  fill: var(--best-color);
+  margin-right: 4px;
+  transition: fill 0.3s ease-out;
+}
+.poi-pin-wrapper_is-best .poi-callout-container__best-icon {
+  display: inline-block;
+}
+.poi-pin-wrapper.active .poi-callout-container_has-hover:hover .poi-callout-container__best-icon {
+  fill: #fff;
+}
+
+.poi-callout-container__status-info {
+  color: rgba(0, 0, 0, 0.64);
+  font-size: 11px;
+  line-height: 12px;
+  margin-top: 4px;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s ease-out 0.3s, opacity 0.3s ease-out, color 0.3s ease-out;
+}
+.poi-callout-container__status-info:empty,
+.poi-callout-container__status-info:first-child {
+  margin-top: 0;
+}
+.poi-pin-wrapper.active .poi-callout-container__status-info {
+  transition: max-height 0.5s ease-out, opacity 0.3s ease-out 0.5s, color 0.3s ease-out;
+  max-height: 200px;
+  opacity: 1;
+}
+.poi-callout-container_has-hover:hover .poi-callout-container__status-info {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.poi-callout-container__status-info a {
+  color: var(--active-color);
+  text-decoration: none;
+}
+
+.poi-value {
+  color: #272a2e;
+  font-size: 15px;
+  text-align: center;
+  transition: color 0.3s ease-out, transform 0.3s ease-out;
+  margin-top: 6px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.poi-value:empty {
+  display: none;
+}
+.poi-pin-wrapper.active .poi-value,
+.poi-pin-wrapper.hide .poi-value,
+.poi-pin-wrapper.hidden .poi-value {
+  transform: translateX(-50%) scale(0);
+}
+.poi-pin:hover ~ .poi-value {
+  color: var(--active-color);
+}
+.poi-pin-wrapper_status-warning .poi-value,
+.poi-pin-wrapper_status-danger .poi-value {
+  color: var(--active-color);
+}
+
+.poi-value_has-bg {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 3px 8px;
+}
+
+.poi-pin-star {
+  display: block;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+}
+
+.poi-pin-star_outer {
+  fill: transparent;
+  transition: fill 0.3s ease-out, transform 0.3s ease-out;
+  transform-origin: center;
+}
+.poi-pin-wrapper.active .poi-pin-star_outer {
+  fill: var(--active-color);
+}
+
+.poi-pin-star_base {
+  fill: #fff;
+  transform-origin: center;
+  transition: fill 0.3s ease-out, transform 0.3s ease-out;
+  transform: scale(0.75);
+}
+
+.poi-pin-wrapper.active .poi-pin-star_base {
+  transform: scale(0.87);
+}
+
+.poi-pin-star_inner {
+  fill: #000;
+  transform: scale(0.3);
+  transform-origin: center;
+  transition: fill 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.poi-pin-star:hover .poi-pin-star_inner {
+  fill: var(--active-color);
+  transform: scale(0.56);
+}
+
+.poi-pin-wrapper.active .poi-pin-star_inner {
+  fill: var(--active-color);
+  transform: scale(0.7);
+}
+
+.poi-pin-star_act {
+  fill: #fff;
+  transform: scale(0.0001); /* Fix bug of jump from .hide removing */
+  transform-origin: center;
+  transition: fill 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.poi-pin-wrapper.active .poi-pin-star_act {
+  transform: scale(0.2);
+}

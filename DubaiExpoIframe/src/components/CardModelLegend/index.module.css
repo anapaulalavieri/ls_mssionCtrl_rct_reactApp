@@ -1,0 +1,62 @@
+.sideButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.sideButton {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  /* reset styles */
+  padding: 0;
+  border: 0 none;
+  box-shadow: none;
+  background: transparent;
+  outline: none;
+  margin-bottom: 22px;
+  font-size: 12px;
+  position: relative;
+}
+.sideButton:last-child {
+  margin-right: 0;
+  margin-bottom: 0;
+  left: -3px;
+}
+
+.sideButtonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.sideButtonIcon:after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: #32363a;
+}
+
+.sideButtonIconRhombus {
+  width: 19px;
+  height: 19px;
+  transform: rotate(45deg);
+}
+
+.sideButtonIconCircle {
+  border-radius: 12px;
+}
+
+.sideButtonIconCircle:after {
+  border-radius: 2px;
+}
+
+.iconStar {
+  margin-right: 10px;
+}

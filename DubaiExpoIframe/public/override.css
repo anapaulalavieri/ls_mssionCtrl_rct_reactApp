@@ -1,0 +1,137 @@
+/**
+	Override styles code here
+	
+	1. Main
+	https://sapinnovation-accenture-com.launchpad.cfapps.eu10.hana.ondemand.com/site?siteId=089f0abd-56f2-4e5a-9293-e6974aba7bde&sap-language=en#scmsem-scmact?sap-ui-app-id-hint=saas_approuter_scm.ctc.dashboard.scmctcdashboard
+	https://sapinnovation-accenture-com.launchpad.cfapps.eu10.hana.ondemand.com/cp.portal/ui5appruntime.html?siteId=089f0abd-56f2-4e5a-9293-e6974aba7bde&subaccountId=98aa7615-2064-4d25-8bcb-9c8735cbb9de&saasApprouter=true&sap-ui-app-id=scm.ctc.dashboard.scmctcdashboard&sap-startup-params=&sap-shell=FLP&sap-touch=0&sap-ui-versionedLibCss=true&sap-plugins=RTAPluginAgent&sap-theme=sap_fiori_3&sap-locale=en&sap-iframe-hint=UI5#scmsem-scmact?sap-ui-app-id-hint=saas_approuter_scm.ctc.dashboard.scmctcdashboard
+
+	2. Plant
+	https://sapinnovation-accenture-com.launchpad.cfapps.eu10.hana.ondemand.com/site?siteId=089f0abd-56f2-4e5a-9293-e6974aba7bde&sap-language=en#scmsem-scmact?sap-ui-app-id-hint=saas_approuter_scm.ctc.dashboard.scmctcdashboard&/secondlayer/Plant%20Frankfurt
+	https://sapinnovation-accenture-com.launchpad.cfapps.eu10.hana.ondemand.com/cp.portal/ui5appruntime.html?siteId=089f0abd-56f2-4e5a-9293-e6974aba7bde&subaccountId=98aa7615-2064-4d25-8bcb-9c8735cbb9de&saasApprouter=true&sap-ui-app-id=scm.ctc.dashboard.scmctcdashboard&sap-startup-params=&sap-shell=FLP&sap-touch=0&sap-ui-versionedLibCss=true&sap-plugins=RTAPluginAgent&sap-theme=sap_fiori_3&sap-locale=en&sap-iframe-hint=UI5#scmsem-scmact?sap-ui-app-id-hint=saas_approuter_scm.ctc.dashboard.scmctcdashboard&/secondlayer/Plant%2520Frankfurt
+*/
+
+
+
+.sap-desktop1 body * {
+	outline: 0px solid rgba(123,123,123,.1);
+}
+
+/*	**************** */
+/*	Main page */
+/*	**************** */
+
+/*	Header */
+
+.sap-desktop1 #__hbox3 {
+	transform: translate(0px, 14px);
+	padding-left: 16px;
+}
+
+	.sap-desktop1 #__data21{
+		
+	}
+	
+	.sap-desktop1 #__data21 > img{
+		height: 2.23rem!important;
+	}
+
+	
+	.sap-desktop1 #__hbox1 {
+		
+	}
+	
+	.sap-desktop1 #__data22 *,
+	.sap-desktop1 #__data23 *{
+		font-size: 18px;
+	    letter-spacing: -0.01em;
+	    line-height: 1px;
+	    transform: translate(7px, 2px);
+	}
+	
+	
+	
+	
+/*	Central */
+.sap-desktop1 #__box3{
+	/* transform: translate(0, 60px); */
+}
+	/*	Left side */
+	.sap-desktop1 #__vbox5 {
+		transform: translate(17px, 60px);
+	}
+	
+		.sap-desktop1 #__vbox3{}
+			
+			.sap-desktop1 #__hbox4 .tileHeaderTitle{
+				
+			}
+		
+		/* Legend */
+		.sap-desktop1 #__vbox4.legendKPI{
+			transform: translate(0, 60px);
+		}
+		
+	
+	/*	Right side */
+	.sap-desktop1 #__vbox12 {
+		transform: translate(-17px, 60px);
+	    width: 187px!important;
+	}
+	
+	
+	
+	
+	
+	
+/*	Footer */
+.sap-desktop1 #__box5 {
+    transform: translate(17px, -42px);
+    width: 93%!important;
+}
+
+
+/*	**************** */
+/*	Plant */
+/*	**************** */
+.sap-desktop1 .tileContentWrapper,
+.sap-desktop1 .tileContainer {
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+}
+
+.sap-desktop1 #__hbox3{
+	
+}
+
+	.sap-desktop1 #__hbox3 #__data35{
+		width: 33%;
+	}
+
+		.sap-desktop1 #__hbox3 #__data35 #__button0 {
+			width: 100%!important;
+			text-align: center;
+			margin: 0!important;
+		}
+	
+
+/*	Central */
+.sap-desktop1 #__box2 {
+	/* transform: translate(0px, 57px); */
+}
+
+	.sap-desktop1 #__box2 #__vbox4 {
+		transform: translate(16px, 60px);
+	}
+	
+	
+	.sap-desktop1 #__box2 #__vbox7 {
+		transform: translate(-16px, 60px);
+		    width: 189px!important;
+	}
+
+
+
+.sap-desktop1 .sap-desktop .sapMTitle{
+	padding-bottom: .3rem;
+}
+

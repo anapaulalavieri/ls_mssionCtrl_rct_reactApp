@@ -1,0 +1,22 @@
+.pin {
+  box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 50%;
+  display: inline-block;
+  height: 10px;
+  margin-right: 8px;
+  width: 10px;
+}
+.pin_type-1 {
+  border-color: #9a5aed;
+  background-color: #9a5aed;
+  border-radius: 2px;
+}
+.pin_type-2 {
+  background-color: rgba(199, 204, 211, 0.5);
+  border-color: rgba(180, 186, 193, 0.7);
+  border-radius: 2px;
+}
+.pin_type-3 {
+  border-color: #a95df1;
+}

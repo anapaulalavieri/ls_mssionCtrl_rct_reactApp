@@ -1,0 +1,58 @@
+.wrapper {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.tooltip {
+  background: #fff;
+  border-radius: 11px;
+  bottom: 130%;
+  box-sizing: border-box;
+  left: 50%;
+  padding: 10px 16px 14px;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 150px;
+}
+
+.tooltipTable {
+  color: #2d2d47;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: right;
+  width: 100%;
+}
+.tooltipTable th,
+.tooltipTable td {
+  padding: 0 12px 0 0;
+}
+.tooltipTable th:last-child,
+.tooltipTable td:last-child {
+  padding-right: 0;
+}
+.tooltipTable th {
+  color: #858f93;
+  font-size: 10px;
+  font-weight: normal;
+  padding-bottom: 14px;
+}
+.tooltipTable td {
+  padding-bottom: 3px;
+}
+.tooltipTable tr:last-child td {
+  padding-bottom: 0;
+}
+.tooltipTable td:first-child {
+  color: #858f93;
+  text-align: left;
+}
+
+.tooltipRectangle {
+  display: block;
+  fill: #fff;
+  left: 50%;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+}

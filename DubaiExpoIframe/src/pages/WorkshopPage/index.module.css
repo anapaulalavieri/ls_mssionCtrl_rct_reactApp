@@ -1,0 +1,36 @@
+.workshopPage {
+  height: 100%;
+  left: 0;
+  min-width: 1400px;
+  min-height: 750px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+:global(.workshopPageAnimate-enter) .workshopPage {
+  opacity: 0;
+}
+
+:global(.workshopPageAnimate-enter-active) .workshopPage {
+  opacity: 1;
+  transition: opacity 0s var(--transition-enter-delay);
+}
+
+.workshopModel {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+:global(.workshopPageAnimate-exit) .workshopModel {
+  opacity: 1;
+}
+
+:global(.workshopPageAnimate-exit-active) .workshopModel {
+  opacity: 0;
+  transition: opacity var(--transition-duration) ease-out;
+}

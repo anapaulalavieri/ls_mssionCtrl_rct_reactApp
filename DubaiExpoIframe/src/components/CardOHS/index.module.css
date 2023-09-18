@@ -1,0 +1,37 @@
+.card {
+  position: absolute;
+  top: 108px;
+  right: 46px;
+  width: 170px;
+  z-index: 20;
+}
+
+:global(.cardOHSAnimate-appear) .card,
+:global(.cardOHSAnimate-enter) .card {
+  opacity: 0;
+  transform: translateX(300px);
+}
+
+:global(.cardOHSAnimate-appear-active) .card {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) ease-out, transform var(--transition-duration) ease-out;
+}
+
+:global(.cardOHSAnimate-enter-active) .card {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) ease-out var(--transition-enter-delay),
+    transform var(--transition-duration) ease-out var(--transition-enter-delay);
+}
+
+:global(.cardOHSAnimate-exit) .card {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+:global(.cardOHSAnimate-exit-active) .card {
+  opacity: 0;
+  transform: translateX(250px);
+  transition: opacity var(--transition-duration) ease-out, transform var(--transition-duration) ease-out;
+}

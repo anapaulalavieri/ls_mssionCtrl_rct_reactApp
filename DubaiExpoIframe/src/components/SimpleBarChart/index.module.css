@@ -1,0 +1,23 @@
+.wrapper {
+  background-color: #f0f1f5;
+  border-radius: 2px;
+  height: 5px;
+  position: relative;
+}
+
+.bar {
+  background-color: #9a5aed;
+  border-radius: 2px;
+  display: block;
+  height: 9px;
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 100%;
+}
+.bar_status-danger {
+  background-color: #f55157;
+}
+.bar_status-warning {
+  background-color: #ffa41c;
+}

@@ -1,0 +1,72 @@
+.wrapper {
+}
+
+.titleWrapper {
+  margin-bottom: 16px;
+  position: relative;
+}
+.titleWrapper:last-child {
+  margin-bottom: 0;
+}
+
+.title {
+  color: #000;
+  font-size: 24px;
+  line-height: 25px;
+  margin-right: 8px;
+}
+.title:last-child {
+  margin-left: 0;
+}
+
+.subTitle {
+  color: #858f93;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.titleButtons {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card {
+  border-radius: 11px;
+}
+.card_hasHover {
+  cursor: pointer;
+  transition: background 0.3s ease-out;
+}
+.card_hasHover:hover {
+  background: #fff;
+}
+.card_hasPadding {
+  padding: 23px 31px;
+}
+
+.cardRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .Default card styles { */
+.card_variant-0 {
+  border: 1px solid #fff;
+  background: linear-gradient(0deg, rgba(218, 228, 245, 0.1), rgba(218, 228, 245, 0.1)), rgba(255, 255, 255, 0.1);
+}
+
+.card_variant-1 {
+  background: #fff;
+}
+
+.card_variant-2 {
+  backdrop-filter: blur(24px);
+  background: linear-gradient(0deg, rgba(228, 231, 237, 0.3), rgba(228, 231, 237, 0.3)), rgba(255, 255, 255, 0.2);
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+
+.card_variant-3 {
+}

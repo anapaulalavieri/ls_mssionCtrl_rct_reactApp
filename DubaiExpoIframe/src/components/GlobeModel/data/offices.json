@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DC Seattle",
+        "style": "dc",
+        "coordinates": [-122.332, 47.6062]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.332, 47.6062]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Plant Atlanta",
+        "style": "normal",
+        "coordinates": [-84.388, 33.749]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-84.388, 33.749]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DC Rotterdam",
+        "style": "dc",
+        "coordinates": [3.47917, 51.9225]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.47917, 51.9225]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Plant Frankfurt",
+        "style": "normal",
+        "coordinates": [9.68417, 50.1155]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.68417, 50.1155]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Plant Beijing",
+        "style": "normal",
+        "coordinates": [116.397, 39.9075]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [116.397, 39.9075]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DC Hong Kong",
+        "style": "dc",
+        "coordinates": [114.15769, 22.28552]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.15769, 22.28552]
+      }
+    }
+  ]
+}

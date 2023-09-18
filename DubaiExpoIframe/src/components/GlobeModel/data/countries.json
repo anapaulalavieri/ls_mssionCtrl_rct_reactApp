@@ -1,0 +1,20 @@
+{
+  "countries": [
+    {
+      "id": 0,
+      "name": "NOCLICK"
+    },
+    {
+      "id": 1,
+      "name": "AMERICAS"
+    },
+    {
+      "id": 122,
+      "name": "EMEA"
+    },
+    {
+      "id": 255,
+      "name": "APJ"
+    }
+  ]
+}

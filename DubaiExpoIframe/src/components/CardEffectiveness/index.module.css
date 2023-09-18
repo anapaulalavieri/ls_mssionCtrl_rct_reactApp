@@ -1,0 +1,192 @@
+.card {
+  position: absolute;
+  right: 48px;
+  bottom: 40px;
+  left: 48px;
+  z-index: 20;
+}
+
+:global(.cardEffectivenessAnimate-appear) .card {
+  opacity: 0;
+  transform: translateY(300px);
+}
+
+:global(.cardEffectivenessAnimate-appear-active) .card {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-duration) ease-out, transform var(--transition-duration) ease-out;
+}
+
+:global(.cardEffectivenessAnimate-exit) .card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:global(.cardEffectivenessAnimate-exit-active) .card {
+  opacity: 0;
+  transform: translateY(300px);
+  transition: opacity var(--transition-duration) ease-out, transform var(--transition-duration) ease-out;
+}
+
+.cardCard {
+}
+
+:global(.cardEffectivenessAnimate-enter) .cardCard {
+  transform: scaleY(0.745);
+  transform-origin: center bottom;
+}
+
+:global(.cardEffectivenessAnimate-enter-active) .cardCard {
+  transform: scaleY(1);
+  transition: transform var(--transition-duration) linear var(--transition-enter-delay);
+}
+
+.cardTitleWrapper {
+}
+
+:global(.cardEffectivenessAnimate-enter) .cardTitleWrapper {
+  opacity: 0;
+  transform: translateX(50px);
+  transform-origin: center bottom;
+}
+
+:global(.cardEffectivenessAnimate-enter-active) .cardTitleWrapper {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) ease-out 1.4s, transform var(--transition-duration) ease-out 1.4s;
+}
+
+.cardGrid {
+  display: flex;
+  flex-wrap: nowrap;
+  /* justify-content: space-between; */
+  height: 142px;
+}
+
+.spacer {
+  background-color: #f0f1f5;
+  display: block;
+  margin: 0 2.5%;
+  height: 114px;
+  width: 1px;
+}
+
+.cardCells {
+  display: flex;
+  width: 25.5%;
+  flex: 0 0 auto;
+}
+
+:global(.cardEffectivenessAnimate-enter) .cardCells {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+:global(.cardEffectivenessAnimate-enter-active) .cardCells {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) ease-out 1.4s, transform var(--transition-duration) ease-out 1.4s;
+}
+
+.cardCell {
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  width: 50%;
+}
+
+.cardCell:first-child {
+  padding-right: 10%;
+  width: 67.5%;
+}
+
+.cardCell:nth-child(2) {
+  width: 32.5%;
+}
+
+.cardCell:nth-last-child(1),
+.cardCell:nth-last-child(2) {
+  margin-bottom: 0;
+}
+
+.cardData {
+  height: 100%;
+  width: 100%;
+}
+
+.cardCellItem {
+  cursor: pointer;
+  transition: color 0.3s ease-out;
+}
+.cardCellItem:hover {
+  color: #a95df1;
+}
+.cardCellItem_active:hover,
+.cardCellItem_active {
+  color: #a100ff;
+}
+
+:global(.cardEffectivenessAnimate-enter) .cardData {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+:global(.cardEffectivenessAnimate-enter-active) .cardData {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) ease-out 1.4s, transform var(--transition-duration) ease-out 1.4s;
+}
+
+.cardCharts {
+}
+
+.cardTables {
+}
+
+.switcherWrapper {
+  padding-right: 4px;
+}
+
+.switcherButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  height: 36px;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  width: 36px;
+}
+.switcherButton + .switcherButton {
+  margin-left: 4px;
+}
+.switcherButton_active {
+}
+
+.switcherButtonIcon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.switcherButtonIcon_stroke {
+  stroke: #b9c1c6;
+  transition: stroke 0.3s ease-out;
+}
+.switcherButton:hover .switcherButtonIcon_stroke {
+  stroke: #575d5e;
+}
+.switcherButton_active .switcherButtonIcon_stroke,
+.switcherButton_active:hover .switcherButtonIcon_stroke {
+  stroke: #000;
+}
+.switcherButtonIcon_fill {
+  fill: #b9c1c6;
+  transition: fill 0.3s ease-out;
+}
+.switcherButton:hover .switcherButtonIcon_fill {
+  fill: #575d5e;
+}
+.switcherButton_active .switcherButtonIcon_fill,
+.switcherButton_active:hover .switcherButtonIcon_fill {
+  fill: #000;
+}

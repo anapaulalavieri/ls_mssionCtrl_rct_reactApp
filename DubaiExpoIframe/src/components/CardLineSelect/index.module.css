@@ -1,0 +1,50 @@
+.wrapper {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(calc(-50% + 230px));
+  z-index: 20;
+}
+
+:global(.cardLineAnimate-appear) .wrapper,
+:global(.cardLineAnimate-enter) .wrapper {
+  opacity: 0;
+  transform: translateY(-250px) translateX(calc(-50% + 230px));
+}
+
+:global(.cardLineAnimate-appear-active) .wrapper {
+  opacity: 1;
+  transform: translateY(0) translateX(calc(-50% + 230px));
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+:global(.cardLineAnimate-enter-active) .wrapper {
+  opacity: 1;
+  transform: translateY(0) translateX(calc(-50% + 230px));
+  transition: opacity var(--transition-duration) linear var(--transition-enter-delay),
+    transform var(--transition-duration) ease-out var(--transition-enter-delay);
+}
+
+:global(.cardLineAnimate-exit) .wrapper {
+  opacity: 1;
+  transform: translateY(0) translateX(calc(-50% + 230px));
+}
+
+:global(.cardLineAnimate-exit-active) .wrapper {
+  opacity: 0;
+  transform: translateY(-250px) translateX(calc(-50% + 230px));
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+.select {
+  /* TODO Style */
+  --_ui5_input_wrapper_border_radius: 3px;
+  --sapField_BorderColor: #fff;
+  --sapField_Hover_BorderColor: #a95df1;
+  --sapButton_Selected_Background: #a95df1;
+  --_ui5_input_height: 24px;
+  --_ui5_input_icon_padding: 3px 6px;
+  /*color: var(--sapButton_Active_TextColor);*/
+  /*--sapButton_Selected_Background: #fff;*/
+  /*--sapButton_Active_TextColor: #b9c1c6;*/
+}

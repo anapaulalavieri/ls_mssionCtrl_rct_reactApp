@@ -1,0 +1,330 @@
+.kpiPage {
+  height: 100%;
+  left: 0;
+  min-width: 1400px;
+  min-height: 750px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+:global(.kpiPageAnimate-enter) .kpiPage {
+  opacity: 0;
+}
+
+:global(.kpiPageAnimate-enter-active) .kpiPage {
+  opacity: 1;
+  transition: opacity 0s var(--transition-enter-delay);
+}
+
+.kpiCard2 {
+  top: 300px;
+  right: 48px;
+  position: absolute;
+  z-index: 10;
+  width: 189px;
+}
+
+:global(.kpiPageAnimate-appear) .kpiCard2,
+:global(.kpiPageAnimate-enter) .kpiCard2 {
+  opacity: 0;
+  transform: translateX(250px);
+}
+
+:global(.kpiPageAnimate-appear-active) .kpiCard2 {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+:global(.kpiPageAnimate-enter-active) .kpiCard2 {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) linear var(--transition-enter-delay),
+    transform var(--transition-duration) ease-out var(--transition-enter-delay);
+}
+
+:global(.kpiPageAnimate-exit) .kpiCard2 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+:global(.kpiPageAnimate-exit-active) .kpiCard2 {
+  opacity: 0;
+  transform: translateX(250px);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+.kpiCardSales {
+  position: absolute;
+  z-index: 10;
+  right: 48px;
+  bottom: 40px;
+  left: 48px;
+}
+
+:global(.kpiPageAnimate-appear) .kpiCardSales,
+:global(.kpiPageAnimate-enter) .kpiCardSales {
+  opacity: 0;
+  transform: translateY(250px);
+}
+
+:global(.kpiPageAnimate-appear-active) .kpiCardSales {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+:global(.kpiPageAnimate-enter-active) .kpiCardSales {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-duration) linear var(--transition-enter-delay),
+    transform var(--transition-duration) ease-out var(--transition-enter-delay);
+}
+
+.kpiCardSalesTitleWrapper {
+}
+
+:global(.kpiPageAnimate-exit) .kpiCardSalesTitleWrapper {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+:global(.kpiPageAnimate-exit-active) .kpiCardSalesTitleWrapper {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+.kpiCardSalesInner {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+:global(.kpiPageAnimate-exit) .kpiCardSalesInner:after {
+  background: #fff;
+  border-radius: 11px;
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scaleX(0.605);
+  transform-origin: left center;
+  width: 100%;
+  z-index: 0;
+}
+
+:global(.kpiPageAnimate-exit-active) .kpiCardSalesInner:after {
+  transform: scaleX(1);
+  transition: transform var(--transition-duration) linear;
+}
+
+.kpiCardSalesLeft {
+  position: relative;
+  width: 60.5%;
+  z-index: 1;
+}
+
+.kpiCardSalesRight {
+  position: relative;
+  width: 39.5%;
+  z-index: 1;
+}
+
+.cardSalesCell {
+  box-sizing: border-box;
+  cursor: pointer;
+  padding-left: 10px;
+  margin-right: 24px;
+  width: 12.3%;
+}
+
+.cardSalesCell:last-child {
+  margin-right: 0;
+}
+
+:global(.kpiPageAnimate-exit) .cardSalesCell,
+:global(.kpiPageAnimate-exit) .kpiCard8,
+:global(.kpiPageAnimate-exit) .kpiCard6,
+:global(.kpiPageAnimate-exit) .kpiCard5,
+:global(.kpiPageAnimate-exit) .cardSalesChart {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+:global(.kpiPageAnimate-exit-active) .cardSalesCell,
+:global(.kpiPageAnimate-exit-active) .kpiCard8,
+:global(.kpiPageAnimate-exit-active) .kpiCard6,
+:global(.kpiPageAnimate-exit-active) .kpiCard5,
+:global(.kpiPageAnimate-exit-active) .cardSalesChart {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+.cardSalesChart {
+  height: 112px;
+  width: 0;
+  flex: 1;
+  margin-bottom: -20px;
+  margin-left: 32px;
+}
+
+.kpiCard3List {
+  justify-content: space-between;
+  margin-top: -14px;
+}
+
+.kpiCard4 {
+  top: 108px;
+  right: 48px;
+  position: absolute;
+  z-index: 10;
+
+  /* TODO Rework */
+  width: 189px;
+}
+
+:global(.kpiPageAnimate-appear) .kpiCard4,
+:global(.kpiPageAnimate-enter) .kpiCard4 {
+  opacity: 0;
+  transform: translateX(250px);
+}
+
+:global(.kpiPageAnimate-appear-active) .kpiCard4 {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+:global(.kpiPageAnimate-enter-active) .kpiCard4 {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) linear var(--transition-enter-delay),
+    transform var(--transition-duration) ease-out var(--transition-enter-delay);
+}
+
+:global(.kpiPageAnimate-exit) .kpiCard4 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+:global(.kpiPageAnimate-exit-active) .kpiCard4 {
+  opacity: 0;
+  transform: translateX(250px);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+.kpiCard5 {
+  padding-left: 24px;
+  width: 120px;
+}
+
+.kpiCard6 {
+  padding-left: 33px;
+  width: 125px;
+}
+
+.kpiCard7 {
+  height: 180px;
+  width: 564px;
+}
+
+.kpiCard8 {
+  padding-left: 11px;
+  height: 92px;
+  width: 142px;
+}
+
+/* Special for Emil with love 🥰 */
+.kpiCard8 :global(.recharts-cartesian-axis-tick:nth-child(1)) {
+  opacity: 0.5;
+}
+.kpiCard8 :global(.recharts-cartesian-axis-tick:nth-child(2)) {
+  font-weight: bold;
+}
+
+.kpiCard8ChartWrapper {
+  margin-top: -15px;
+  height: 85px;
+  width: 140px;
+}
+
+.kpiCard8Chart {
+  position: relative;
+  width: 100%;
+}
+
+.kpiModel {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+:global(.kpiPageAnimate-appear) .kpiModel,
+:global(.kpiPageAnimate-enter) .kpiModel {
+  opacity: 0;
+}
+
+:global(.kpiPageAnimate-appear-active) .kpiModel {
+  opacity: 1;
+  transition: opacity var(--transition-duration) ease-out;
+}
+
+:global(.kpiPageAnimate-enter-active) .kpiModel {
+  opacity: 1;
+  transition: opacity var(--transition-duration) ease-out var(--transition-enter-delay);
+}
+
+:global(.kpiPageAnimate-exit) .kpiModel {
+  opacity: 1;
+}
+
+:global(.kpiPageAnimate-exit-active) .kpiModel {
+  opacity: 0;
+  transition: opacity var(--transition-duration) ease-out;
+}
+
+.cardModelLegend {
+  top: 440px;
+  left: 77px;
+  position: absolute;
+  width: 186px;
+}
+
+:global(.kpiPageAnimate-appear) .cardModelLegend,
+:global(.kpiPageAnimate-enter) .cardModelLegend {
+  opacity: 0;
+  transform: translateX(-250px);
+}
+
+:global(.kpiPageAnimate-appear-active) .cardModelLegend {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}
+
+:global(.kpiPageAnimate-enter-active) .cardModelLegend {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--transition-duration) linear var(--transition-enter-delay),
+    transform var(--transition-duration) ease-out var(--transition-enter-delay);
+}
+
+:global(.kpiPageAnimate-exit) .cardModelLegend {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+:global(.kpiPageAnimate-exit-active) .cardModelLegend {
+  opacity: 0;
+  transform: translateX(-250px);
+  transition: opacity var(--transition-duration) linear, transform var(--transition-duration) ease-out;
+}

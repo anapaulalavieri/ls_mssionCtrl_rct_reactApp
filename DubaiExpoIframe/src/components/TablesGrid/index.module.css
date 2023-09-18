@@ -1,0 +1,137 @@
+.tablesGridWrapper {
+  align-items: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  position: relative;
+}
+
+.legend {
+  padding-left: 12px;
+  padding-top: 35px;
+  padding-right: 7.5%;
+  min-width: 120px;
+}
+
+.legendItem {
+  color: #858f93;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 15px;
+  margin-bottom: 4px;
+  transition: color 0.3s ease-out;
+}
+.legendItem:last-child {
+  margin-bottom: 0;
+}
+.legendItem:hover {
+  color: #a95df1;
+}
+.legendItem_active:hover,
+.legendItem_active {
+  color: #a100ff;
+}
+
+.legendPin {
+  border-radius: 50%;
+  display: inline-block;
+  height: 8px;
+  margin-right: 8px;
+  visibility: hidden;
+  width: 8px;
+}
+.legendPin1 {
+  background-color: #3abef0;
+}
+.legendPin2 {
+  background-color: #8379f7;
+}
+.legendPin3 {
+  background-color: #a100ff;
+}
+.legendPin4 {
+  background-color: #f5bc51;
+}
+
+.tables {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  position: relative;
+  flex: 1;
+}
+
+.tableWrapper {
+  padding-right: 22px;
+  width: 33.3%;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.tableWrapper:last-child {
+  padding-right: 0;
+}
+
+.tableTitle {
+  color: #2d2d47;
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+.tableTitle:last-child {
+  margin-bottom: 0;
+}
+
+.table {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-left: -10px;
+  flex: 1;
+  max-width: 227px;
+}
+
+.column {
+  border-radius: 4px;
+  color: #858f93;
+  /*cursor: pointer;*/
+  box-sizing: border-box;
+  text-align: center;
+  padding: 6px 4px 8px;
+  min-width: 35px;
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
+}
+
+.column_active/*,
+.column:hover */ {
+  background-color: rgba(45, 45, 71, 0.05);
+  color: #2d2d47;
+}
+
+.columnItem {
+  font-size: 12px;
+  line-height: 14px;
+  margin-bottom: 5px;
+}
+.columnItem_danger {
+  color: #f55157;
+}
+.columnItem_warning {
+  color: #ffa41c;
+}
+
+.columnItem:last-child {
+  margin-bottom: 0;
+}
+
+.columnItem_definition {
+  color: #b9c1c6;
+  transition: color 0.3s ease-out;
+  margin-top: 12px;
+}
+.column_active .columnItem_definition/*,
+.column:hover .columnItem_definition*/ {
+  color: #2d2d47;
+}
